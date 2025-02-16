@@ -1,0 +1,35 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card shadow-sm border-0">
+        <div class="card-body p-4">
+          <h1 class="text-center fw-bold mb-4">➕ Add a New Restaurant</h1>
+
+          <%= simple_form_for(@restaurant) do |f| %>
+            <div class="mb-3">
+              <%= f.input :name, label: "Restaurant Name", input_html: { class: "form-control" } %>
+            </div>
+
+            <div class="mb-3">
+              <%= f.input :address, label: "Address", input_html: { class: "form-control" } %>
+            </div>
+
+            <div class="mb-3">
+              <%= f.input :phone_number, label: "Phone Number", input_html: { class: "form-control" } %>
+            </div>
+
+            <div class="mb-4">
+              <%= f.input :category, as: :select, collection: Restaurant::CATEGORIES, label: "Category",
+                            prompt: "Select a category", input_html: { class: "form-select" } %>
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <%= link_to "⬅ Back", restaurants_path, class: "btn btn-outline-secondary" %>
+              <%= f.submit "Create Restaurant", class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

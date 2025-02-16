@@ -1,0 +1,28 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card shadow-sm border-0">
+        <div class="card-body p-4">
+          <h1 class="text-center fw-bold mb-4">📝 Add a Review for <%= @restaurant.name %></h1>
+
+          <%= simple_form_for [@restaurant, @review] do |f| %>
+            <div class="mb-3">
+              <%= f.input :content, label: "Your Review",
+                           input_html: { class: "form-control", rows: 4, placeholder: "Write your review here..." } %>
+            </div>
+
+            <div class="mb-4">
+              <%= f.input :rating, as: :select, collection: Review::RATINGS, label: "Your Rating",
+                            prompt: "Select a rating", input_html: { class: "form-select" } %>
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <%= link_to "⬅ Back to Restaurant", restaurant_path(@restaurant), class: "btn btn-outline-secondary" %>
+              <%= f.submit "Submit Review", class: "btn btn-success" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
